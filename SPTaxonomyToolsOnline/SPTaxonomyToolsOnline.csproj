@@ -33,22 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EPPlus, Version=3.1.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\EPPlus.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="EPPlus">
+      <HintPath>..\dist\EPPlus.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SharePoint.Client, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>lib\Microsoft.SharePoint.Client.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.SharePoint.Client">
+      <HintPath>..\dist\Microsoft.SharePoint.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SharePoint.Client.Runtime, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>lib\Microsoft.SharePoint.Client.Runtime.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.SharePoint.Client.Runtime">
+      <HintPath>..\dist\Microsoft.SharePoint.Client.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SharePoint.Client.Taxonomy, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>lib\Microsoft.SharePoint.Client.Taxonomy.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.SharePoint.Client.Taxonomy">
+      <HintPath>..\dist\Microsoft.SharePoint.Client.Taxonomy.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

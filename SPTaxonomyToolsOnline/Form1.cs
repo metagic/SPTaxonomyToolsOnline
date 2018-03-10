@@ -459,7 +459,6 @@ namespace SPTaxonomyToolsOnline
                 ctx.ExecuteQuery();
                 tcout("Site loaded", web.Title);
 
-                var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
                 var session = TaxonomySession.GetTaxonomySession(ctx);
 
                 TermStore store = null;
@@ -467,6 +466,11 @@ namespace SPTaxonomyToolsOnline
                 TermSet set = null;
 
                 LoadTStoreTGroupTSet(ctx, session, ref store, ref group, ref set);
+
+                // NKE, 2018-03-09
+                // Better to rely on WorkingLanguage of termstore
+                // var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
+                var lcid = store.WorkingLanguage;
 
                 // get all terms
                 var allMmdTerms = set.GetAllTerms();
@@ -624,7 +628,6 @@ namespace SPTaxonomyToolsOnline
                 ctx.ExecuteQuery();
                 tcout("Site loaded", web.Title);
 
-                var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
                 var session = TaxonomySession.GetTaxonomySession(ctx);
 
                 TermStore store = null;
@@ -632,6 +635,11 @@ namespace SPTaxonomyToolsOnline
                 TermSet set = null;
 
                 LoadTStoreTGroupTSet(ctx, session, ref store, ref group, ref set);
+
+                // NKE, 2018-03-09
+                // Better to rely on WorkingLanguage of termstore
+                // var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
+                var lcid = store.WorkingLanguage;
 
                 // get all terms
                 var allMmdTerms = set.GetAllTerms();
@@ -911,7 +919,6 @@ namespace SPTaxonomyToolsOnline
                 ctx.ExecuteQuery();
                 tcout("Site loaded", web.Title);
 
-                var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
                 var session = TaxonomySession.GetTaxonomySession(ctx);
 
                 TermStore store = null;
@@ -919,6 +926,11 @@ namespace SPTaxonomyToolsOnline
                 TermSet set = null;
 
                 LoadTStoreTGroupTSet(ctx, session, ref store, ref group, ref set);
+
+                // NKE, 2018-03-09
+                // Better to rely on WorkingLanguage of termstore
+                // var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
+                var lcid = store.WorkingLanguage;
 
                 // get all terms in termset, will be checking paths
                 var mmdTerms = set.GetAllTerms();
@@ -1259,7 +1271,6 @@ namespace SPTaxonomyToolsOnline
                 ctx.ExecuteQuery();
                 tcout("Site loaded", web.Title);
 
-                var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
                 var session = TaxonomySession.GetTaxonomySession(ctx);
 
                 TermStore store = null;
@@ -1267,6 +1278,11 @@ namespace SPTaxonomyToolsOnline
                 TermSet set = null;
 
                 LoadTStoreTGroupTSet(ctx, session, ref store, ref group, ref set);
+
+                // NKE, 2018-03-09
+                // Better to rely on WorkingLanguage of termstore
+                // var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
+                var lcid = store.WorkingLanguage;
 
                 // import terms
                 int i = 0;
@@ -1454,7 +1470,6 @@ namespace SPTaxonomyToolsOnline
                 ctx.ExecuteQuery();
                 tcout("Site loaded", web.Title);
 
-                var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
                 var session = TaxonomySession.GetTaxonomySession(ctx);
 
                 TermStore store = null;
@@ -1462,6 +1477,11 @@ namespace SPTaxonomyToolsOnline
                 TermSet set = null;
 
                 LoadTStoreTGroupTSet(ctx, session, ref store, ref group, ref set);
+
+                // NKE, 2018-03-09
+                // Better to rely on WorkingLanguage of termstore
+                // var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
+                var lcid = store.WorkingLanguage;
 
                 // get root terms for deletion
                 var terms = set.Terms;
@@ -1571,7 +1591,6 @@ namespace SPTaxonomyToolsOnline
                 ctx.ExecuteQuery();
                 tcout("Site loaded", web.Title);
 
-                var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
                 var session = TaxonomySession.GetTaxonomySession(ctx);
 
                 TermStore store = null;
@@ -1579,6 +1598,11 @@ namespace SPTaxonomyToolsOnline
                 TermSet set = null;
 
                 LoadTStoreTGroupTSet(ctx, session, ref store, ref group, ref set);
+
+                // NKE, 2018-03-09
+                // Better to rely on WorkingLanguage of termstore
+                // var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
+                var lcid = store.WorkingLanguage;
 
                 // get all terms, then loop to find matches to update
                 var terms = set.GetAllTerms();
@@ -1661,7 +1685,8 @@ namespace SPTaxonomyToolsOnline
                                     {
                                         try
                                         {
-                                            curTerm.SetDescription(importObj.descr, System.Globalization.CultureInfo.CurrentCulture.LCID);
+                                            // NKE, 2018-03-09
+                                            curTerm.SetDescription(importObj.descr, lcid);
                                             ctx.ExecuteQuery();
                                             tcout(" -- Description updated");
                                         }
@@ -1716,7 +1741,8 @@ namespace SPTaxonomyToolsOnline
 
                                             foreach (var lbl in labelsToAdd)
                                             {
-                                                curTerm.CreateLabel(GenUtil.MmdDenormalize(lbl), System.Globalization.CultureInfo.CurrentCulture.LCID, false);
+                                                // NKE, 2018-03-09
+                                                curTerm.CreateLabel(GenUtil.MmdDenormalize(lbl), lcid, false);
                                                 ctx.ExecuteQuery();
                                                 tcout(" -- Term label added", lbl);
                                             }
@@ -2370,13 +2396,17 @@ namespace SPTaxonomyToolsOnline
                 ctx.ExecuteQuery();
                 tcout("Site loaded", web.Title);
 
-                var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
                 var session = TaxonomySession.GetTaxonomySession(ctx);
 
                 TermStore store = null;
                 TermGroup group = null;
 
                 LoadTStoreTGroup(ctx, session, ref store, ref group);
+
+                // NKE, 2018-03-09
+                // Better to rely on WorkingLanguage of termstore
+                // var lcid = System.Globalization.CultureInfo.CurrentCulture.LCID;
+                var lcid = store.WorkingLanguage;
 
                 var newTermSetId = Guid.NewGuid();
 
